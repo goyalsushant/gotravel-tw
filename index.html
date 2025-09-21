@@ -12,34 +12,58 @@
         rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .custom-class {
+            transition: transform 3s ease-in;
+
+        }
+
+        .custom-class:hover {
+            /* transition: all 1s ease; */
+            transform: scale(2);
+        }
+    </style>
 </head>
 
 <body class="font-[Lato]">
     <!-- Header Section -->
     <header class="bg-green-700 text-white fixed w-screen z-50">
-        <div class="container flex justify-between p-4 items-center mx-auto">
+        <div class="container flex justify-between p-4 items-center mx-auto flex-wrap">
             <a href="#" class="font-bold text-2xl">Go Travel</a>
-            <nav id="menu" class="items-center flex w-auto">
-                <ul class="flex space-x-6">
+            <button id="menu-toggle" class="md:hidden block">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+            <nav id="menu" class="w-full md:items-center md:flex md:w-auto hidden">
+                <ul class="flex flex-col mt-4 md:flex-row md:space-x-6 md:mt-0">
                     <li><a href="#" class="hover:text-green-200">Home</a></li>
                     <li><a href="#about" class="hover:text-green-200">About Us</a></li>
                     <li><a href="#destination" class="hover:text-green-200">Destination</a></li>
                     <li><a href="#testimonials" class="hover:text-green-200">Testimonials</a></li>
                     <li><a href="#contact" class="hover:text-green-200">Contact Us</a></li>
                 </ul>
+                <div class="flex md:hidden space-x-3 mt-2">
+                    <button class="bg-white text-green-700 px-3 py-1 rounded hover:bg-green-100">Sign Up</button>
+                    <button
+                        class="border border-white px-3 py-1 rounded hover:bg-white hover:text-green-700">Login</button>
+                </div>
             </nav>
-            <div class="space-x-3 flex">
+            <div class="hidden md:flex space-x-3">
                 <button class="bg-white text-green-700 px-4 py-2 rounded hover:bg-green-100">Sign Up</button>
-                <button class="border border-white px-4 py-2 rounded hover:bg-white hover:text-green-700">Login</button>
+                <button
+                    class="border border-white px-4 py-2 rounded hover:bg-white hover:text-green-700 custom-class">Login</button>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="h-[80vh] bg-[url('https://gotravel123.netlify.app/assets/1.jpg')] bg-cover bg-center relative">
-        <div class="flex items-center justify-center text-center text-white inset-0 bg-black bg-opacity-60 absolute">
+    <section class="h-[80vh] bg-[url('./bg-dark.png')] bg-cover bg-center relative">
+        <div class="flex items-center justify-center text-center text-white inset-0 bg-black bg-opacity-60 sm:absolute">
             <div>
-                <h1 class="text-3xl font-bold mb-4">Enjoy With Your Club & Create Memories</h1>
+                <h1 class="text-md md:text-3xl font-bold mb-4">Enjoy With Your Club & Create Memories</h1>
                 <p class="mb-6">Some representative placeholder content for the first slide.</p>
                 <a href="#destination"
                     class="text-green-700 bg-white rounded px-6 py-3 hover:bg-green-100 font-semibold">Explore Now</a>
@@ -51,16 +75,19 @@
     <main class="container mx-auto">
         <!-- About Section -->
         <section id="about" class="py-16">
-            <div class="flex items-center gap-8 px-10">
-                <div class="w-1/2">
+            <div class="flex flex-col md:flex-row items-center gap-8 px-10">
+                <!-- If the screen width is greater than or equal to 768px, it will occupy 50% of width -->
+                <div class="md:w-1/2">
                     <p class="text-green-700 font-bold mb-2">About Us</p>
-                    <h2 class="text-3xl font-bold mb-4">Our Journey is Started With a Determination To Travel All Around This World</h2>
+                    <h2 class="text-3xl font-bold mb-4">Our Journey is Started With a Determination To Travel All Around
+                        This World</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quo accusantium eveniet!
                         Eligendi, officia! Minima soluta maxime minus explicabo accusamus amet quaerat optio, saepe hic
                         dolor vel iure velit enim?</p>
                 </div>
-                <div class="w-1/2">
-                    <img src="https://gotravel123.netlify.app/assets/abt-us.jpg" alt="About Us" class="w-full h-full obect-cover rounded">
+                <div class="md:w-1/2">
+                    <img src="https://gotravel123.netlify.app/assets/abt-us.jpg" alt="About Us"
+                        class="w-full h-full obect-cover rounded">
                 </div>
             </div>
         </section>
@@ -71,9 +98,13 @@
                 <p class="text-green-700 font-bold mb-2">Destination</p>
                 <h2 class="text-2xl font-bold">Explore The Breath-Taking Adventures With Us</h2>
             </div>
-            <div class="grid grid-cols-4 gap-6 px-4">
+            <!-- 
+                sm:<property> means we are targeting screen sizes greater than or equal to sm breakpoint == 640px
+            -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4">
                 <div class="rounded shadow overflow-hidden">
-                    <img src="https://gotravel123.netlify.app/assets/des-1.jpg" alt="Destination-1" class="w-full h-60 obect-cover">
+                    <img src="https://gotravel123.netlify.app/assets/des-1.jpg" alt="Destination-1"
+                        class="w-full h-60 obect-cover">
                     <div class="text-center p-4">
                         <h3 class="font-bold mb-2">Get Into Wild In Indonesia</h3>
                         <div class="flex text-sm text-gray-700 justify-around">
@@ -83,7 +114,8 @@
                     </div>
                 </div>
                 <div class="rounded shadow overflow-hidden">
-                    <img src="https://gotravel123.netlify.app/assets/des-2.jpg" alt="Destination-2" class="w-full h-60 obect-cover">
+                    <img src="https://gotravel123.netlify.app/assets/des-2.jpg" alt="Destination-2"
+                        class="w-full h-60 obect-cover">
                     <div class="text-center p-4">
                         <h3 class="font-bold mb-2">Get Into Wild In Indonesia</h3>
                         <div class="flex text-sm text-gray-700 justify-around">
@@ -93,7 +125,8 @@
                     </div>
                 </div>
                 <div class="rounded shadow overflow-hidden">
-                    <img src="https://gotravel123.netlify.app/assets/des-3.jpg" alt="Destination-3" class="w-full h-60 obect-cover">
+                    <img src="https://gotravel123.netlify.app/assets/des-3.jpg" alt="Destination-3"
+                        class="w-full h-60 obect-cover">
                     <div class="text-center p-4">
                         <h3 class="font-bold mb-2">Get Into Wild In Indonesia</h3>
                         <div class="flex text-sm text-gray-700 justify-around">
@@ -103,7 +136,8 @@
                     </div>
                 </div>
                 <div class="rounded shadow overflow-hidden">
-                    <img src="https://gotravel123.netlify.app/assets/des-4.jpg" alt="Destination-4" class="w-full h-60 obect-cover">
+                    <img src="https://gotravel123.netlify.app/assets/des-4.jpg" alt="Destination-4"
+                        class="w-full h-60 obect-cover">
                     <div class="text-center p-4">
                         <h3 class="font-bold mb-2">Get Into Wild In Indonesia</h3>
                         <div class="flex text-sm text-gray-700 justify-around">
@@ -116,9 +150,11 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="bg-[url('https://gotravel123.netlify.app/assets/45367.jpg')] bg-cover bg-center h-[80vh] flex justify-center items-center px-4 text-center">
+        <section id="testimonials"
+            class="bg-[url('https://gotravel123.netlify.app/assets/45367.jpg')] bg-cover bg-center h-[80vh] flex justify-center items-center px-4 text-center">
             <div class="p-8 rounded-lg max-w-2xl bg-white/70 backdrop-blur">
-                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ad sit illo itaque, maiores dolores
+                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ad sit illo itaque,
+                    maiores dolores
                     voluptates exercitationem! Molestias illo officiis omnis. Ipsa sed doloribus laboriosam explicabo
                     odit, optio similique dolorem.</p>
                 <h3 class="text-green-700 font-bold text-xl">Ahmed Shezath</h3>
@@ -127,20 +163,25 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact">
-            <div>
+        <section id="contact"
+            class="bg-[url('https://gotravel123.netlify.app/assets/newssection-bg.jpg')] bg-center bg-cover py-16">
+            <div class="px-4">
                 <div>
-                    <h4>Subscribe To Our News-Letter</h4>
+                    <h4 class="text-2xl font-bold mb-4">Subscribe To Our News-Letter</h4>
                     <form action="">
                         <div>
-                            <label for="email">Email address</label>
-                            <input type="email" name="email" id="email" placeholder="example@example.com">
-                            <p>We'll never share your email with anyone else.</p>
-                            <div>
-                                <label for="checkbox">Agree All the Terms & Services</label>
-                                <input type="checkbox" name="checkbox" id="checkbox">
+                            <label for="email" class="text-sm font-medium mb-2 block">Email address</label>
+                            <input type="email" name="email" id="email" placeholder="example@example.com"
+                                class="border border-gray-300 p-2 rounded">
+                            <p class="text-gray-500 text-sm py-2">We'll never share your email with anyone else.</p>
+                            <div class="mb-4">
+                                <label for="checkbox">
+                                    <input type="checkbox" name="checkbox" id="checkbox" class="mr-2">
+                                    Agree All the Terms & Services
+                                </label>
                             </div>
-                            <button type="submit">Subscribe</button>
+                            <button type="submit"
+                                class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Subscribe</button>
                         </div>
                     </form>
                 </div>
@@ -149,11 +190,59 @@
     </main>
 
     <!-- Footer section -->
-    <section>
+    <footer class="bg-green-700 py-4 text-center text-white">
         <div>
             <p>ThIs Website is Created For Educational Purposes Not For Any Commercial Use @2025</p>
         </div>
-    </section>
+    </footer>
+
+    <!-- Mobile nav toggle script -->
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            document.getElementById('menu').classList.toggle('hidden');
+        });
+    </script>
 </body>
 
 </html>
+
+
+<!-- 
+max-sm	@media (width < 40rem) { ... } // 640px
+max-md	@media (width < 48rem) { ... } // 768px
+max-lg	@media (width < 64rem) { ... } // 1024px
+max-xl	@media (width < 80rem) { ... } // 1280px
+max-2xl	@media (width < 96rem) { ... } // 1536px
+
+
+<= 480 px for mobile devices
+>480px and <=768px for tablet devices //  max-width : 768px
+>768px and <=1024 small screen devices
+>1024px and <1280px for medium screen devices -> widely used desktop devices
+>1280 for large screens -> modern day screens
+
+
+1. 480px
+2. 768px
+3. 1024px - 1280
+4. general styling - desktop styling
+
+@media (max-width: 480px) {
+    // define css here for mobile devices
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    // define css here for tablet devices
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    // define css for small screen desktop
+}
+
+// CSS block for general styling
+
+
+
+<640 px is a screen width
+>=640px is also a screen width // = means a breakpoint - when we encounter an "=" we say that we have to style it from that breakpoint size onwards
+-->
